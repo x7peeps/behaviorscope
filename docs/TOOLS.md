@@ -118,6 +118,124 @@ brew install yara
 #   tshark: https://www.wireshark.org/download.html (WiresharkPortable64)
 ```
 
+## 七、竞品与参考工具生态（2026-08-24 全网扫描）
+
+### 7.1 开源沙箱平台
+
+| 工具 | 离线? | 免费? | 平台 | 特点 | 来源 |
+|---|---|---|---|---|---|
+| **CAPEv2** | ✅ 本地部署 | ✅ | Linux+KVM | 最广泛使用的开源沙箱，提取配置/payload/YARA分类 | github.com/kevoreilly/CAPEv2 |
+| **Cuckoo3** | ✅ | ✅ | Python/KVM | CAPE 上游重写版，Python3，活跃开发中 | github.com/cuckoosandbox/cuckoo |
+| **DRAKVUF Sandbox** | ✅ | ✅ | Xen/HVM | agentless（hypervisor 层监控），恶意软件无法检测 | github.com/tklengyel/drakvuf |
+| **detux** | ✅ | ✅ | Linux | Linux 恶意软件流量分析+IOC捕获沙箱 | github.com/detuxsandbox/detux |
+| **Limon** | ✅ | ✅ | Python | Linux 恶意软件分析沙箱 | github.com/monnappa22/Limon |
+
+### 7.2 预制分析环境（VM/Docker）
+
+| 工具 | 离线? | 平台 | 特点 | 来源 |
+|---|---|---|---|---|
+| **REMnux** | ✅ Linux发行版+Docker | 200+恶意分析工具（radare2/retdec/thug/volatility等） | remnux.org / Docker Hub |
+| **FLARE VM** | ✅ Windows发行版 | Mandiant出品，70+工具通过Chocolatey安装到WinVM | github.com/mandiant/flare-vm |
+| **REMnux MCP Server** | ✅ | 连接AI代理到所有REMnux工具（workflow编码） | REMnux生态 |
+
+### 7.3 静态分析工具（竞品常用）
+
+| 工具 | 离线? | 平台 | 特点 | 来源 |
+|---|---|---|---|---|
+| **Ghidra** | ✅ | win/mac/linux | NSA逆向套件，50+架构反汇编/反编译 | github.com/NationalSecurityAgency/ghidra |
+| **radare2 / Cutter** | ✅ | 全平台 | 开源逆向框架+Cutter GUI（Qt） | github.com/radareorg/radare2 |
+| **IDA Pro** | 💰商业 | win/mac/linux | 业界标准逆向工具 | hex-rays.com |
+| **capa** | ✅ | python/win | Mandiant出品，恶意软件能力检测（MITRE ATT&CK标注） | github.com/mandiant/capa |
+| **FLOSS** | ✅ | python/win | Mandiant FLARE，混淆字符串自动提取 | github.com/mandiant/flare-floss |
+| **PE-bear** | ✅ | Windows | PE文件图形分析（头/节/导入导出/异常检测） | hshrzd.wordpress.com/pe-bear |
+| **Detect It Easy (DIE)** | ✅ | win/mac/linux | 加壳/编译器/链接器检测 | github.com/horsicq/Detect-It-Easy |
+| **PEStudio** | ✅ | Windows | PE静态分析+VT结果（免费非开源） | winitor.com |
+| **Manalyze** | ✅ | C++/python | PE文件静态分析 | github.com/JusticeRage/Manalyze |
+| **MASTIFF** | ✅ | Python | 静态分析框架（多格式） | github.com/KoreLogicSecurity/mastiff |
+| **MultiScanner** | ✅ | Python | 模块化文件扫描/分析框架 | github.com/MITRECND/multiscanner |
+| **peframe** | ✅ | Python | PE文件与Office文档静态分析 | github.com/guelfoweb/peframe |
+| **PortEx** | ✅ | Java | PE文件Java库 | github.com/katjahahn/PortEx |
+| **Nauz File Detector** | ✅ | win/mac/linux | 跨平台链接器/编译器检测 | github.com/horsicq/Nauz-File-Detector |
+
+### 7.4 动态分析工具
+
+| 工具 | 离线? | 平台 | 特点 | 来源 |
+|---|---|---|---|---|
+| **x64dbg** | ✅ | Windows | x64/x32开源调试器，OllyDbg替代品+插件生态 | github.com/x64dbg/x64dbg |
+| **WinDbg** | ✅ | Windows | 微软多用途调试器（内核模式） | docs.microsoft.com/windbg |
+| **Speakeasy** | ✅ | Python | Mandiant Windows内核/用户态模拟器（shellcode/PE） | github.com/mandiant/speakeasy |
+| **Noriben** | ✅ | Python | 利用Procmon收集沙箱环境下的进程信息 | github.com/Rurik/Noriben |
+| **Pafish** | ✅ | C | 检测沙盒/分析环境的PoC恶意软件（反调试） | github.com/a0rtega/pafish |
+| **al-khaser** | ✅ | C++ | 反恶意软件系统检测PoC | github.com/LordNoteworthy/al-khaser |
+
+### 7.5 取证与DFIR工具
+
+| 工具 | 离线? | 平台 | 特点 | 来源 |
+|---|---|---|---|---|
+| **volatility3** | ✅ | python/win/mac/linux | 内存镜像分析（--offline模式） | github.com/volatilityfoundation/volatility3 |
+| **Autopsy / Sleuth Kit** | ✅ | Java/Python | 开源数字取证平台+文件系统分析 | autopsy.sleuthkit.org |
+| **FTK Imager** | ✅ | Windows | 镜像采集与查看（免费） | accessdata.com |
+| **Eric Zimmerman Tools** | ✅ | Windows | Win取证工具全家桶（RECmd/PECmd/EvtxECmd等） | github.com/EricZimmerman |
+| **Plaso (log2timeline)** | ✅ | Python | 时间线分析工具 | github.com/log2time/plaso |
+| **Hayabusa** | ✅ | Rust | Windows事件日志威胁狩猎 | github.com/Yamato-Security/hayabusa |
+| **Loki IOC Scanner** | ✅ | Python | Florian Roth的IOC+YARA扫描器 | github.com/Neo23x0/Loki |
+| **Rekall** | ✅ | Python | Google出品内存取证框架 | github.com/google/rekall |
+
+### 7.6 文档/脚本分析
+
+| 工具 | 离线? | 平台 | 特点 | 来源 |
+|---|---|---|---|---|
+| **oletools** | ✅ | Python | Microsoft Office文档恶意宏/VBA/OLE检测 | github.com/decalage2/oletools |
+| **ViperMonkey** | ✅ | Python | VBA宏模拟器（静态去混淆+模拟执行） | github.com/decalage2/ViperMonkey |
+| **pdfid/pdf-parser** | ✅ | Python | DidierStevens PDF恶意分析工具 | github.com/DidierStevens/DidierStevensSuite |
+| **jadx / jadx-gui** | ✅ | Java | APK反编译（含MCP插件） | github.com/skylot/jadx |
+
+### 7.7 CTF取证专用（竞品参考：阿乐AFST等）
+
+| 工具 | 离线? | 平台 | 特点 | 来源 |
+|---|---|---|---|---|
+| **Ale Forensic Suite Toolkit (AFST)** | ✅ Windows | 25类工具分类，80+取证工具，AI辅助（Claude MCP） | cn-sec.com/archives/5319584 |
+| **StegoVeritas** | ✅ | Python | 自动化隐写分析 | github.com/InQuest/stegoVeritas |
+| **zsteg** | ✅ | Ruby | PNG/BMP LSB隐写检测 | github.com/zed-0xff/zsteg |
+| **steghide / stegseek** | ✅ | C | JPG/WAV隐写（支持密码爆破） | steghide.sourceforge.net |
+| **stegsolve** | ✅ | Java | 图像位平面/颜色通道分析 | github.com/zed-0xff/stegsolve |
+| **exiftool** | ✅ | Perl | 元数据提取（100+格式） | exiftool.org |
+| **binwalk** | ✅ | Python | 固件解包+魔数识别 | github.com/ReFirmLabs/binwalk |
+| **foremost / scalpel** | ✅ | C | 文件雕刻恢复 | foremost.sourceforge.net |
+
+### 7.8 在线沙箱（不可用于比赛现场，但了解竞品格局）
+
+| 工具 | 联网? | 特点 | 来源 |
+|---|---|---|---|
+| **ANY.RUN** | ✅ 必须联网 | 交互式在线沙箱 | any.run |
+| **Hybrid Analysis** | ✅ | VxSandbox支持，免费分析 | github.com/Forcepoint/hybrid-analysis |
+| **Joe Sandbox** | ✅ | 深度恶意软件分析（商业） | joesecurity.org |
+| **微步云沙箱** | ✅ 中国 | 国内主流在线沙箱 | threatbook.cn |
+| **VirusTotal** | ✅ | 多引擎扫描+URL分析 | virustotal.com |
+
+### 7.9 AI辅助分析（竞品趋势）
+
+| 工具 | 离线? | 特点 | 来源 |
+|---|---|---|---|
+| **GhidraMCP / GhidrAssist** | ✅ | AI代理驱动Ghidra逆向工程 | REMnux生态 |
+| **r2ai** | ✅ | radare2的AI插件 | github.com/ahellier/r2ai |
+| **REMnux MCP Server** | ✅ | AI代理连接所有REMnux工具（workflow编码） | REMnux生态 |
+
+---
+
+## 八、BehaveScope 差异化定位（基于竞品分析）
+
+| 维度 | CAPEv2/REMnux/FLARE VM | AFST取证包 | capa/FLOSS/DIE | **BehaveScope** |
+|---|---|---|---|---|
+| **离线可用** | ✅ 但需部署VM | ✅ VM镜像 | ✅ 单工具 | ✅ **一条命令自动闭环** |
+| **自动化程度** | ⚠️ 需配置/脚本化 | ⚠️ 工具合集，人肉点用 | ❌ 单点工具 | ✅ **四引擎自动路由+报告生成** |
+| **CTF场景优化** | ⚠️ 偏企业安全 | ✅ CTF取证 | ❌ 不面向CTF | ✅ **专为比赛现场设计（秒级静态→分钟级动态）** |
+| **本地AI集成** | ⚠️ REMnux有MCP但需联网 | ✅ Claude MCP（需联网API） | ❌ | ✅ **离线Qwen3.5-9B GGUF（5080可跑）** |
+| **便携性** | ❌ VM/Docker重 | ⚠️ 大镜像/VM | ✅ 单工具 | ✅ **U盘绿色目录，一条命令启动** |
+| **报告输出** | ⚠️ JSON/HTML需配置 | ⚠️ 各工具格式不一 | ❌ 无 | ✅ **统一JSON+MD+HTML可提交报告** |
+
+> **核心差异化总结**：BehaveScope = 离线自动分析闭环（非工具合集）+ CTF现场优化（非企业安全）+ 本地AI推理（非联网MCP）+ U盘绿色便携（非VM部署）。
+
 ## 风险登记
 
 | 风险 | 等级 | 缓解 |
