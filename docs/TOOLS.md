@@ -80,6 +80,25 @@
 
 ---
 
+## Windows 便携版获取速查（客户 ROG 现场组装用）
+
+| 工具 | Windows 便携形态 | 获取方式 |
+|---|---|---|
+| Ghidra | 官方 zip（含 analyzeHeadless.bat） | github.com/NationalSecurityAgency/ghidra/releases |
+| volatility3 | pip 包（Python 跨平台） | `pip install volatility3`（win 上同样可用） |
+| frida | pip 包 + frida-server.exe | `pip install frida frida-tools` |
+| 7-Zip | 便携版 7zr.exe/7za.exe | 7-zip.org |
+| capa | capa-vX-win64.zip（自带 python 环境） | github.com/mandiant/capa/releases |
+| FLOSS | floss-vX-windows.zip | github.com/mandiant/flare-floss/releases |
+| DIE | die_win64_portable_x.x.x.zip | github.com/horsicq/Detect-It-Easy/releases |
+| yara | yara-x win64 或 pyyara wheel | github.com/VirusTotal/yara-x/releases |
+| tshark/Wireshark | WiresharkPortable64 | www.wireshark.org/download.html |
+| Sysinternals | SysinternalsSuite.zip（procmon/sigcheck） | learn.microsoft.com/sysinternals/downloads |
+| llama.cpp (CUDA) | llama-bXXXX-bin-win-cuda-12.4-x64.zip | github.com/ggml-org/llama.cpp/releases（选 CUDA 12.8+ 版） |
+| Python 便携 | embeddable zip + pip | python.org（可选，PyInstaller 后无需） |
+
+> 组装原则：**现场 U 盘只带 onedir 打包的 behave.exe + rules/ + ai/（可选模型）**，其余工具按需作为兜底。全部绿色免安装。
+
 ## 待下载 TODO（网络恢复后执行）
 
 ```bash
